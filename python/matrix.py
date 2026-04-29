@@ -35,6 +35,7 @@ local_A = comm.scatter(split_A, root=0)
 
 # B'yi herkese gönder
 B = comm.bcast(B, root=0)
+
 comm.Barrier()
 start_time = MPI.Wtime()
 
@@ -51,7 +52,14 @@ for row in local_A:
 
 # sonuçları topla
 C = comm.gather(local_C, root=0)
+
 end_time = MPI.Wtime()
-# sadece master yazdırır
+
+# sadece master yazdırır ve dosyaya yazar
 if rank == 0:
-    print("Calisma suresi:", end_time - start_time, "saniye")
+    duration = end_time - start_time
+    print("Calisma suresi:", duration, "saniye")
+
+    # 🔥 YENİ EKLENEN KISIM
+    with open("../results.txt", "a") as f:
+        f.write(f"Python - {size} cekirdek: {duration} saniye\n")
