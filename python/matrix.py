@@ -54,8 +54,4 @@ C = comm.gather(local_C, root=0)
 end_time = MPI.Wtime()
 # sadece master yazdırır
 if rank == 0:
-    print("Sonuç matrisi:")
-    for part in C:
-        for row in part:
-            print(row)
     print("Calisma suresi:", end_time - start_time, "saniye")
