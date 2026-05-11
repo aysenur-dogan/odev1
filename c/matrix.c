@@ -119,18 +119,22 @@ int main(int argc, char **argv) {
     double end_time = MPI_Wtime();
 
     if (rank == 0) {
-        printf("Calisma suresi: %f saniye\n", end_time - start_time);
+    printf("Calisma suresi: %f saniye\n", end_time - start_time);
 
-        if (n <= 10) {
-            printf("Sonuc matrisi:\n");
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    printf("%d ", C[i * n + j]);
-                }
-                printf("\n");
+    FILE *f = fopen("../results.txt", "a");
+    fprintf(f, "C - %d cekirdek: %f saniye\n", size, end_time - start_time);
+    fclose(f);
+
+    if (n <= 10) {
+        printf("Sonuc matrisi:\n");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                printf("%d ", C[i * n + j]);
             }
+            printf("\n");
         }
     }
+}
 
     free(A);
     free(B);

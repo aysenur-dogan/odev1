@@ -1,5 +1,0 @@
-Python - 1 cekirdek: 1.622943 saniye
-Python - 2 cekirdek: 0.786783 saniye
-Python - 4 cekirdek: 0.426322 saniye
-Python - 8 cekirdek: 0.35146099999999997 saniye
-Python - 16 cekirdek: 0.31192999999999993 saniye
