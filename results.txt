@@ -1,0 +1,15 @@
+Python - 1 cekirdek: 1.5041 saniye
+Python - 2 cekirdek: 0.7656839999999999 saniye
+Python - 4 cekirdek: 0.433373 saniye
+Python - 8 cekirdek: 0.34241200000000005 saniye
+Python - 16 cekirdek: 0.2918090000000001 saniye
+C - 1 cekirdek: 0.049203 saniye
+C - 2 cekirdek: 0.019591 saniye
+C - 4 cekirdek: 0.011437 saniye
+C - 8 cekirdek: 0.015268 saniye
+C - 16 cekirdek: 0.009911 saniye
+C - 1 cekirdek: 0.040622 saniye
+C - 2 cekirdek: 0.019712 saniye
+C - 4 cekirdek: 0.011602 saniye
+C - 8 cekirdek: 0.014592 saniye
+C - 16 cekirdek: 0.011418 saniye

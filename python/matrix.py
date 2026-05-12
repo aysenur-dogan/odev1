@@ -5,7 +5,6 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
-# sadece master okur
 if rank == 0:
     def read_matrix(filename):
         with open(filename, "r") as f:
@@ -21,10 +20,10 @@ else:
     A = None
     B = None
 
-# herkese n gönder
+
 n = comm.bcast(n, root=0)
 
-# A'yı parçalara böl
+
 if rank == 0:
     rows_per_proc = n // size
     split_A = [A[i*rows_per_proc:(i+1)*rows_per_proc] for i in range(size)]
@@ -33,13 +32,13 @@ else:
 
 local_A = comm.scatter(split_A, root=0)
 
-# B'yi herkese gönder
+
 B = comm.bcast(B, root=0)
 
 comm.Barrier()
 start_time = MPI.Wtime()
 
-# local çarpım
+
 local_C = []
 for row in local_A:
     result_row = []
@@ -50,16 +49,16 @@ for row in local_A:
         result_row.append(sum_val)
     local_C.append(result_row)
 
-# sonuçları topla
+
 C = comm.gather(local_C, root=0)
 
 end_time = MPI.Wtime()
 
-# sadece master yazdırır ve dosyaya yazar
+
 if rank == 0:
     duration = end_time - start_time
     print("Calisma suresi:", duration, "saniye")
 
-    # 🔥 YENİ EKLENEN KISIM
+  
     with open("../results.txt", "a") as f:
         f.write(f"Python - {size} cekirdek: {duration} saniye\n")
